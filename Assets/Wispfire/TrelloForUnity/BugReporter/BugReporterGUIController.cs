@@ -26,7 +26,7 @@ namespace Wispfire.BugReporting
         {
             MenuState = state;
             gameObject.SetActive(state);
-            AudioListener.pause = state;
+            // AudioListener.pause = state;
             Time.timeScale = state ? 0f : 1f;
             if (state)
             {

@@ -179,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReportInterface: {fileID: 2396072699175749189}
   SkipScreenshot: 0
+  Vip: 0
 --- !u!114 &2366070525296756926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,6 +357,34 @@ PrefabInstance:
     - target: {fileID: 1967391364200628, guid: 9edbd4ddb16144bed82a5f08c82672d9, type: 3}
       propertyPath: m_Layer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114779774687502218, guid: 9edbd4ddb16144bed82a5f08c82672d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114779774687502218, guid: 9edbd4ddb16144bed82a5f08c82672d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114779774687502218, guid: 9edbd4ddb16144bed82a5f08c82672d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 2366070525296756922}
+    - target: {fileID: 114779774687502218, guid: 9edbd4ddb16144bed82a5f08c82672d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114779774687502218, guid: 9edbd4ddb16144bed82a5f08c82672d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 114779774687502218, guid: 9edbd4ddb16144bed82a5f08c82672d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114779774687502218, guid: 9edbd4ddb16144bed82a5f08c82672d9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 223019639885890736, guid: 9edbd4ddb16144bed82a5f08c82672d9, type: 3}
       propertyPath: m_SortingOrder
