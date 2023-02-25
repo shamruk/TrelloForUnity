@@ -6,11 +6,11 @@ namespace Wispfire.TrelloForUnity
     public class TrelloConnectionData : TrelloAuthenticator
     {
         [SerializeField]
-        private string APIKey;
+        public string APIKey;
         [SerializeField]
-        private string AuthToken;
+        public string AuthToken;
         [SerializeField]
-        private string ApplicationName;
+        public string ApplicationName;
 
 
         public override string GetAuthString()
