@@ -20,11 +20,11 @@ namespace Wispfire.BugReporting
         IEnumerator handleBugReport(BugReport report, Action OnDone, string targetList)
         {
             // Turn bug report info into card
-            string title = string.Empty;
-            title += "(" + report.SceneName + ") ";
+            var title = string.Empty;
             title += report.Title;
             title += " #" + removeWhiteSpace(report.Version);
             title += " #" + removeWhiteSpace(report.Platform);
+            title += " #" + removeWhiteSpace(report.SceneName);
 
             string description = string.Empty;
             description += "Username: " + report.Username + "\n";

@@ -1,0 +1,8 @@
+{
+    "name": "Wispfire.TrelloForUnity.BugReport",
+    "references": [
+        "Wispfire.TrelloForUnity.Trello"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}
