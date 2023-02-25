@@ -1,0 +1,11 @@
+{
+    "name": "TrelloForUnity-Editor",
+    "references": [
+        "Wispfire.TrelloForUnity.Trello",
+        "Wispfire.TrelloForUnity.BugReport"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": []
+}
