@@ -15,6 +15,7 @@ namespace Wispfire.BugReporting
         public string SceneName;
         public string Version;
         public string Platform;
+        public bool Vip;
 
         public List<ImageAttachment> Screenshots = new List<ImageAttachment>();
         public List<TextAttachment> TextFiles = new List<TextAttachment>();

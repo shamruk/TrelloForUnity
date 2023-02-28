@@ -46,6 +46,7 @@ namespace Wispfire.BugReporting {
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
                 version,
                 Application.platform);
+            report.Vip = Vip;
             if (!SkipScreenshot) {
                 report.AddScreenshot("screenshot" + System.DateTime.UtcNow.ToShortTimeString(), cachedScreenshot);
             }

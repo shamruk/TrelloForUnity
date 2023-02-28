@@ -22,6 +22,9 @@ namespace Wispfire.BugReporting
             // Turn bug report info into card
             var title = string.Empty;
             title += report.Title;
+            if (report.Vip) {
+                title += " #VIP";    
+            }
             title += " #" + removeWhiteSpace(report.Version);
             title += " #" + removeWhiteSpace(report.Platform);
             title += " #" + removeWhiteSpace(report.SceneName);
