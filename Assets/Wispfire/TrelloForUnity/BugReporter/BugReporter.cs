@@ -16,7 +16,8 @@ namespace Wispfire.BugReporting {
         
         public bool SkipScreenshot;
         public Func<string> StateGetter;
-        public bool Vip;
+        public bool vip;
+        public string customLogs = string.Empty;
 
         void Start() {
             sessionLog = GetComponent<SessionLogger>();
@@ -48,12 +49,12 @@ namespace Wispfire.BugReporting {
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
                 version,
                 Application.platform);
-            report.Vip = Vip;
+            report.Vip = vip;
             if (!SkipScreenshot) {
                 report.AddScreenshot("screenshot" + System.DateTime.UtcNow.ToShortTimeString(), cachedScreenshot);
             }
             report.AddTextAttachment("SystemInfo", SystemInformation.GetDebugSystemInfo(), "txt");
-            report.AddTextAttachment("SessionInfo", sessionLog.PrintLog(), "txt");
+            report.AddTextAttachment("SessionInfo", sessionLog.PrintLog() + "\nCustomLogs:\n" + customLogs, "txt");
             if (StateGetter != null) {
                 report.AddTextAttachment("State", StateGetter(), "txt");
             }
