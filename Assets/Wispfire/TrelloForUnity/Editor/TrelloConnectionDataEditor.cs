@@ -19,6 +19,7 @@ namespace Wispfire.TrelloForUnity.Editor {
             root.Add(new Button(GetKey) { text = nameof(GetKey) });
             root.Add(new Button(GetToken) { text = nameof(GetToken) });
             root.Add(new Button(SetAppName) { text = nameof(SetAppName) });
+            root.Add(new Button(GetBoardListIds) { text = nameof(GetBoardListIds) });
             return root;
         }
         
@@ -36,6 +37,10 @@ namespace Wispfire.TrelloForUnity.Editor {
 
         private void SetAppName() {
             Target.ApplicationName = appName;
+        }
+        
+        private void GetBoardListIds() {
+            Application.OpenURL("https://trello.com/1/boards/XXXXXXXX/lists");
         }
     }
 }

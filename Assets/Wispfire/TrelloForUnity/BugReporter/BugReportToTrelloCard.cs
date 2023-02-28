@@ -14,7 +14,7 @@ namespace Wispfire.BugReporting
 
         public void HandleBugReport(BugReport report, Action OnDone)
         {
-            StartCoroutine(handleBugReport(report, OnDone, BugReportListID));
+            StartCoroutine(handleBugReport(report, OnDone, string.IsNullOrEmpty(BugReportListID) ? Client.authenticator.DefaultListID : BugReportListID));
         }
 
         IEnumerator handleBugReport(BugReport report, Action OnDone, string targetList)

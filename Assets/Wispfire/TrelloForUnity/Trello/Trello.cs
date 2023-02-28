@@ -9,7 +9,7 @@ namespace Wispfire.TrelloForUnity
     {
 
         [SerializeField]
-        private TrelloAuthenticator authenticator;
+        public TrelloAuthenticator authenticator;
 
         string authString()
         {

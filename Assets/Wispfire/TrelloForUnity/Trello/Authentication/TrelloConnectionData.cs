@@ -10,7 +10,9 @@ namespace Wispfire.TrelloForUnity
         [SerializeField]
         public string AuthToken;
         [SerializeField]
-        public string ApplicationName;
+        public string ApplicationName;    
+        [SerializeField]
+        public string DefaultListID;
 
 
         public override string GetAuthString()
