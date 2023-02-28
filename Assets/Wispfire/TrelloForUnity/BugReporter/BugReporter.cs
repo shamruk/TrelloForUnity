@@ -33,7 +33,9 @@ namespace Wispfire.BugReporting {
 
         IEnumerator generateBugReport(BugReportUserData data) {
             var grabScreenshot = StartCoroutine(screenGrabAndCache());
-            yield return grabScreenshot;
+            if (!SkipScreenshot) {
+                yield return grabScreenshot;
+            }
 
             Debug.Log("Submitting bug report.");
 
