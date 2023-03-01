@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using Wispfire.TrelloForUnity;
 
 namespace Wispfire.BugReporting
 {
-    public class BugReportToTrelloCard : MonoBehaviour
-    {
+    public class BugReportToTrelloCard : MonoBehaviour {
+        public string cheatCodeTitle;
+        public UnityEvent onCheatCode = new ();
         public Trello Client;
 
         [SerializeField]
@@ -14,6 +16,10 @@ namespace Wispfire.BugReporting
 
         public void HandleBugReport(BugReport report, Action OnDone)
         {
+            if (report.Title == cheatCodeTitle) {
+                onCheatCode.Invoke();
+                return;
+            }
             StartCoroutine(handleBugReport(report, OnDone, string.IsNullOrEmpty(BugReportListID) ? Client.authenticator.DefaultListID : BugReportListID));
         }
 
