@@ -30,7 +30,7 @@ namespace Wispfire.BugReporting
             SceneName = sceneName;
             Username = username;
             Version = version;
-            Platform = getPlatformString(platform);
+            Platform = platform.ToString();
         }
 
         public void AddTextAttachment(string name, string content, string extension)
@@ -48,29 +48,6 @@ namespace Wispfire.BugReporting
             for (int i = 0; i < Screenshots.Count; i++)
             {
                 Screenshots[i].OnDestroy();
-            }
-        }
-
-        string getPlatformString(RuntimePlatform platform)
-        {
-            switch (platform)
-            {
-                case RuntimePlatform.XboxOne:
-                    return "xBoxOne";
-                case RuntimePlatform.PS4:
-                    return "PS4";
-                case RuntimePlatform.OSXPlayer:
-                    return "macOS";                  
-                case RuntimePlatform.LinuxPlayer:
-                    return "Linux";
-                case RuntimePlatform.WindowsPlayer:
-                    return "Windows";
-                case RuntimePlatform.LinuxEditor:
-                case RuntimePlatform.OSXEditor:
-                case RuntimePlatform.WindowsEditor:
-                    return "Editor";
-                default:
-                    return "UnknownPlatform";
             }
         }
 

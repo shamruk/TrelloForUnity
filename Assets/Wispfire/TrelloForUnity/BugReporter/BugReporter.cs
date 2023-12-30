@@ -8,18 +8,6 @@ namespace Wispfire.BugReporting {
         typeof(BugReportToTrelloCard)
     )]
     public class BugReporter : MonoBehaviour {
-        public static RuntimePlatform RuntimePlatform =>
-#if UNITY_EDITOR || UNITY_STANDALONE
-            RuntimePlatform.OSXEditor;
-#elif UNITY_IOS
-            RuntimePlatform.IPhonePlayer;
-#elif UNITY_ANDROID
-            RuntimePlatform.Android;
-#elif UNITY_WEBGL
-            RuntimePlatform.WebGLPlayer;
-#else
-            Application.platform;
-#endif
         
         public BugReporterGUIController ReportInterface;
 
@@ -62,7 +50,7 @@ namespace Wispfire.BugReporting {
                 "",
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
                 version,
-                RuntimePlatform);
+                Application.platform);
             report.Category = category;
             report.Vip = vip;
             if (!SkipScreenshot) {
