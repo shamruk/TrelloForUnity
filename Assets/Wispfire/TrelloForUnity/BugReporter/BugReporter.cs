@@ -31,7 +31,7 @@ namespace Wispfire.BugReporting {
         public bool SkipScreenshot;
         public Func<string> StateGetter;
         public bool vip;
-        public bool addLogs;
+        public bool skipLogs;
         public string customLogs = string.Empty;
 
         void Start() {
@@ -68,7 +68,7 @@ namespace Wispfire.BugReporting {
             if (!SkipScreenshot) {
                 report.AddScreenshot("screenshot_" + System.DateTime.UtcNow.ToShortTimeString(), cachedScreenshot);
             }
-            if (addLogs) {
+            if (!skipLogs) {
                 report.AddTextAttachment("device", SystemInformation.GetDebugSystemInfo(), "txt");
                 report.AddTextAttachment("logs", sessionLog.PrintLog() + "\nCustomLogs:\n" + customLogs, "txt");
             }
