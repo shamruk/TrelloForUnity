@@ -8,15 +8,30 @@ namespace Wispfire.BugReporting {
         typeof(BugReportToTrelloCard)
     )]
     public class BugReporter : MonoBehaviour {
+        public static string RuntimePlatform =>
+#if UNITY_EDITOR || UNITY_STANDALONE
+            "emulator";
+#elif UNITY_IOS
+            "ios";
+#elif UNITY_ANDROID
+            "android";
+#elif UNITY_WEBGL
+            "web";
+#else
+            "unknown";
+#endif
+        
         public BugReporterGUIController ReportInterface;
 
         private Texture2D cachedScreenshot;
         private SessionLogger sessionLog;
         private BugReportToTrelloCard client;
         
+        public string category;
         public bool SkipScreenshot;
         public Func<string> StateGetter;
         public bool vip;
+        public bool addLogs;
         public string customLogs = string.Empty;
 
         void Start() {
@@ -33,9 +48,8 @@ namespace Wispfire.BugReporting {
         }
 
         IEnumerator generateBugReport(BugReportUserData data) {
-            var grabScreenshot = StartCoroutine(screenGrabAndCache());
             if (!SkipScreenshot) {
-                yield return grabScreenshot;
+                yield return StartCoroutine(screenGrabAndCache());
             }
 
             Debug.Log("Submitting bug report.");
@@ -48,15 +62,18 @@ namespace Wispfire.BugReporting {
                 "",
                 UnityEngine.SceneManagement.SceneManager.GetActiveScene().name,
                 version,
-                Application.platform);
+                RuntimePlatform);
+            report.Category = category;
             report.Vip = vip;
             if (!SkipScreenshot) {
-                report.AddScreenshot("screenshot" + System.DateTime.UtcNow.ToShortTimeString(), cachedScreenshot);
+                report.AddScreenshot("screenshot_" + System.DateTime.UtcNow.ToShortTimeString(), cachedScreenshot);
             }
-            report.AddTextAttachment("SystemInfo", SystemInformation.GetDebugSystemInfo(), "txt");
-            report.AddTextAttachment("SessionInfo", sessionLog.PrintLog() + "\nCustomLogs:\n" + customLogs, "txt");
+            if (addLogs) {
+                report.AddTextAttachment("device", SystemInformation.GetDebugSystemInfo(), "txt");
+                report.AddTextAttachment("logs", sessionLog.PrintLog() + "\nCustomLogs:\n" + customLogs, "txt");
+            }
             if (StateGetter != null) {
-                report.AddTextAttachment("State", StateGetter(), "txt");
+                report.AddTextAttachment("state", StateGetter(), "txt");
             }
 
             Send(report);
