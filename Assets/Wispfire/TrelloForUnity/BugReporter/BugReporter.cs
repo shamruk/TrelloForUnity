@@ -8,17 +8,17 @@ namespace Wispfire.BugReporting {
         typeof(BugReportToTrelloCard)
     )]
     public class BugReporter : MonoBehaviour {
-        public static string RuntimePlatform =>
+        public static RuntimePlatform RuntimePlatform =>
 #if UNITY_EDITOR || UNITY_STANDALONE
-            "emulator";
+            RuntimePlatform.OSXEditor;
 #elif UNITY_IOS
-            "ios";
+            RuntimePlatform.IPhonePlayer;
 #elif UNITY_ANDROID
-            "android";
+            RuntimePlatform.Android;
 #elif UNITY_WEBGL
-            "web";
+            RuntimePlatform.WebGLPlayer;
 #else
-            "unknown";
+            Application.platform;
 #endif
         
         public BugReporterGUIController ReportInterface;
